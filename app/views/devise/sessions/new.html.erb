@@ -1,0 +1,110 @@
+<div>
+  <div class="relative bg-light-blue-700 pb-32 overflow-hidden">
+    <nav class="relative z-10 border-b border-teal-500 border-opacity-25 lg:bg-transparent lg:border-none">
+      <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+        <div class="relative h-16 flex items-center justify-between lg:border-b lg:border-light-blue-800">
+          <div class="px-2 flex items-center lg:px-0">
+            <div class="flex-shrink-0">
+              <%= image_tag "logo_databitat_white.png", class: "h-8 w-auto", alt: "Databitat" %>
+            </div>
+            <div class="hidden lg:block lg:ml-6 lg:space-x-4">
+              <div class="flex">
+                
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!--
+        Mobile menu, toggle classes based on menu state.
+
+        Menu open: "block", Menu closed: "hidden"
+      -->
+      <div class="bg-light-blue-900 hidden lg:hidden">
+        <div class="pt-2 pb-3 px-2 space-y-1">
+          
+        </div>
+        <div class="pt-4 pb-3 border-t border-light-blue-800">
+          <div class="flex items-center px-4">
+            
+          </div>
+          <div class="mt-3 px-2">
+            
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="min-h-screen bg-gray-50 flex flex-col py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+      Sign in to your account
+    </h2>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <% if flash.alert %>
+        <div  id="error_explanation" class="rounded-md bg-red-50 p-4 mb-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <!-- Heroicon name: solid/x-circle -->
+              <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">
+                <%= flash.alert %>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="mb-4">
+          <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.password_field :password, autocomplete: "current-password", class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" %>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-8">
+
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" %>
+            <%= f.label :remember_me, class: "ml-2 block text-sm text-gray-900" %>
+          </div>
+        <% end %>
+        
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <div class="text-sm">
+            <%= link_to "Forgot password?", new_password_path(resource_name), class: "font-medium text-light-blue-700 hover:text-light-blue-500" %><br />
+          </div>
+        <% end %>
+
+        </div>
+
+        <div>
+          <%= f.submit "Sign in", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-light-blue-700 hover:bg-light-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue-500" %>
+        </div>
+      
+    </div>
+<% end %>
+
+<div class="mt-4">
+  <p><%# link_to "Create new account", new_registration_path(resource_name), class: "text-light-blue-700 hover:text-light-blue-500" %></p>
+</div>
